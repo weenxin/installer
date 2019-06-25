@@ -8,6 +8,7 @@ crds=(
   memcacheds.kubedb.com
   mongodbs.kubedb.com
   mysqls.kubedb.com
+  perconaxtradbs.kubedb.com
   postgreses.kubedb.com
   redises.kubedb.com
   snapshots.kubedb.com
@@ -16,6 +17,7 @@ crds=(
   memcachedversions.catalog.kubedb.com
   mongodbversions.catalog.kubedb.com
   mysqlversions.catalog.kubedb.com
+  perconaxtradbversions.catalog.kubedb.com
   postgresversions.catalog.kubedb.com
   redisversions.catalog.kubedb.com
   appbindings.appcatalog.appscode.com
@@ -501,6 +503,11 @@ fi
 if [ "$KUBEDB_CATALOG" = "all" ] || [ "$KUBEDB_CATALOG" = "mysql" ]; then
   echo "installing KubeDB MySQL catalog"
   ${SCRIPT_LOCATION}deploy/kubedb-catalog/mysql.yaml | $ONESSL envsubst | kubectl apply -f -
+fi
+
+if [ "$KUBEDB_CATALOG" = "all" ] || [ "$KUBEDB_CATALOG" = "percona-xtradb" ]; then
+  echo "installing KubeDB PerconaXtraDB catalog"
+  ${SCRIPT_LOCATION}deploy/kubedb-catalog/percona-xtradb.yaml | $ONESSL envsubst | kubectl apply -f -
 fi
 
 if [ "$KUBEDB_CATALOG" = "all" ] || [ "$KUBEDB_CATALOG" = "postgres" ]; then
