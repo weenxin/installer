@@ -513,30 +513,30 @@ if [ "$KUBEDB_CATALOG" = "all" ] || [ "$KUBEDB_CATALOG" = "redis" ]; then
   ${SCRIPT_LOCATION}deploy/kubedb-catalog/redis.yaml | $ONESSL envsubst | kubectl apply -f -
 fi
 
-if [ "$KUBEDB_ENABLE_VALIDATING_WEBHOOK" = true ]; then
-  echo "checking whether admission webhook(s) are activated or not"
-  active=$($ONESSL wait-until-has annotation \
-    --apiVersion=apiregistration.k8s.io/v1beta1 \
-    --kind=APIService \
-    --name=v1alpha1.validators.kubedb.com \
-    --key=admission-webhook.appscode.com/active \
-    --timeout=5m || {
-    echo
-    echo "Failed to check if admission webhook(s) are activated or not. Please check operator logs to debug further."
-    exit 1
-  })
-  if [ "$active" = false ]; then
-    echo
-    echo "Admission webhooks are not activated."
-    echo "Enable it by configuring --enable-admission-plugins flag of kube-apiserver."
-    echo "For details, visit: https://appsco.de/kube-apiserver-webhooks ."
-    echo "After admission webhooks are activated, please uninstall and then reinstall Voyager operator."
-    # uninstall misconfigured webhooks to avoid failures
-    kubectl delete validatingwebhookconfiguration -l app=kubedb || true
-    kubectl delete mutatingwebhookconfiguration -l app=kubedb || true
-    exit 1
-  fi
-fi
+#if [ "$KUBEDB_ENABLE_VALIDATING_WEBHOOK" = true ]; then
+#  echo "checking whether admission webhook(s) are activated or not"
+#  active=$($ONESSL wait-until-has annotation \
+#    --apiVersion=apiregistration.k8s.io/v1beta1 \
+#    --kind=APIService \
+#    --name=v1alpha1.validators.kubedb.com \
+#    --key=admission-webhook.appscode.com/active \
+#    --timeout=5m || {
+#    echo
+#    echo "Failed to check if admission webhook(s) are activated or not. Please check operator logs to debug further."
+#    exit 1
+#  })
+#  if [ "$active" = false ]; then
+#    echo
+#    echo "Admission webhooks are not activated."
+#    echo "Enable it by configuring --enable-admission-plugins flag of kube-apiserver."
+#    echo "For details, visit: https://appsco.de/kube-apiserver-webhooks ."
+#    echo "After admission webhooks are activated, please uninstall and then reinstall Voyager operator."
+#    # uninstall misconfigured webhooks to avoid failures
+#    kubectl delete validatingwebhookconfiguration -l app=kubedb || true
+#    kubectl delete mutatingwebhookconfiguration -l app=kubedb || true
+#    exit 1
+#  fi
+#fi
 
 # configure prometheus monitoring
  if [ "$MONITORING_ENABLE" = "true" ] && [ "$MONITORING_AGENT" != "$MONITORING_AGENT_NONE" ]; then
