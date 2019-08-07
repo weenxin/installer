@@ -17,6 +17,7 @@ crds=(
   mongodbversions.catalog.kubedb.com
   mysqlversions.catalog.kubedb.com
   postgresversions.catalog.kubedb.com
+  pgbouncerversions.catalog.kubedb.com
   redisversions.catalog.kubedb.com
   appbindings.appcatalog.appscode.com
 )
@@ -513,8 +514,13 @@ if [ "$KUBEDB_CATALOG" = "all" ] || [ "$KUBEDB_CATALOG" = "redis" ]; then
   ${SCRIPT_LOCATION}deploy/kubedb-catalog/redis.yaml | $ONESSL envsubst | kubectl apply -f -
 fi
 
-#if [ "$KUBEDB_ENABLE_VALIDATING_WEBHOOK" = true ]; then
-#  echo "checking whether admission webhook(s) are activated or not"
+if [ "$KUBEDB_CATALOG" = "all" ] || [ "$KUBEDB_CATALOG" = "pgbouncer" ]; then
+  echo "installing KubeDB PgBouncer catalog"
+  ${SCRIPT_LOCATION}deploy/kubedb-catalog/pgbouncer.yaml | $ONESSL envsubst | kubectl apply -f -
+fi
+
+if [ "$KUBEDB_ENABLE_VALIDATING_WEBHOOK" = true ]; then
+  echo "checking whether admission webhook(s) are activated or not"
 #  active=$($ONESSL wait-until-has annotation \
 #    --apiVersion=apiregistration.k8s.io/v1beta1 \
 #    --kind=APIService \
@@ -536,7 +542,7 @@ fi
 #    kubectl delete mutatingwebhookconfiguration -l app=kubedb || true
 #    exit 1
 #  fi
-#fi
+fi
 
 # configure prometheus monitoring
  if [ "$MONITORING_ENABLE" = "true" ] && [ "$MONITORING_AGENT" != "$MONITORING_AGENT_NONE" ]; then

@@ -1,0 +1,28 @@
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: PgBouncerVersion
+metadata:
+  name: "1.9.0-r"
+  labels:
+    app: kubedb
+spec:
+  deprecated: false
+  version: "1.9.0"
+  db:
+    image: "rezoan/pb:latest"
+  podSecurityPolicies:
+    databasePolicyName: pgbouncer
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: PgBouncerVersion
+metadata:
+  name: "1.9.0"
+  labels:
+    app: kubedb
+spec:
+  deprecated: false
+  version: "1.9.0"
+  db:
+    image: "${KUBEDB_DOCKER_REGISTRY}/pb:1.9.0"
+  podSecurityPolicies:
+    databasePolicyName: pgbouncer
