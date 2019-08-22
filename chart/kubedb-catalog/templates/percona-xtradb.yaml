@@ -17,6 +17,6 @@ spec:
   initContainer:
     image: "{{ .Values.dockerRegistry }}"/busybox
   podSecurityPolicies:
-    databasePolicyName: perconaxtradb-db
+    databasePolicyName: percona-xtradb-db
 
 {{ end }}

@@ -505,9 +505,9 @@ if [ "$KUBEDB_CATALOG" = "all" ] || [ "$KUBEDB_CATALOG" = "mysql" ]; then
   ${SCRIPT_LOCATION}deploy/kubedb-catalog/mysql.yaml | $ONESSL envsubst | kubectl apply -f -
 fi
 
-if [ "$KUBEDB_CATALOG" = "all" ] || [ "$KUBEDB_CATALOG" = "perconaxtradb" ]; then
+if [ "$KUBEDB_CATALOG" = "all" ] || [ "$KUBEDB_CATALOG" = "percona-xtradb" ]; then
   echo "installing KubeDB PerconaXtraDB catalog"
-  ${SCRIPT_LOCATION}deploy/kubedb-catalog/perconaxtradb.yaml | $ONESSL envsubst | kubectl apply -f -
+  ${SCRIPT_LOCATION}deploy/kubedb-catalog/percona-xtradb.yaml | $ONESSL envsubst | kubectl apply -f -
 fi
 
 if [ "$KUBEDB_CATALOG" = "all" ] || [ "$KUBEDB_CATALOG" = "postgres" ]; then
