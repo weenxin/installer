@@ -9,6 +9,8 @@ spec:
   version: "1.9.0"
   db:
     image: "rezoan/pb:latest"
+  exporter:
+    image: "rezoan/pgbouncer_exporter:latest"
   podSecurityPolicies:
     databasePolicyName: pgbouncer
 
@@ -24,5 +26,7 @@ spec:
   version: "1.9.0"
   db:
     image: "${KUBEDB_DOCKER_REGISTRY}/pb:1.9.0"
+  exporter:
+    image: "${KUBEDB_DOCKER_REGISTRY}/pgbouncer_exporter:master"
   podSecurityPolicies:
     databasePolicyName: pgbouncer

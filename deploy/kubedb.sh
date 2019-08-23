@@ -9,6 +9,7 @@ crds=(
   mongodbs.kubedb.com
   mysqls.kubedb.com
   postgreses.kubedb.com
+  pgbouncers.kubedb.com
   redises.kubedb.com
   snapshots.kubedb.com
   elasticsearchversions.catalog.kubedb.com
