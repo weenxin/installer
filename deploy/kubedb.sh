@@ -12,6 +12,7 @@ crds=(
   postgreses.kubedb.com
   redises.kubedb.com
   snapshots.kubedb.com
+  proxysqls.kubedb.com
   elasticsearchversions.catalog.kubedb.com
   etcdversions.catalog.kubedb.com
   memcachedversions.catalog.kubedb.com
@@ -21,6 +22,7 @@ crds=(
   postgresversions.catalog.kubedb.com
   redisversions.catalog.kubedb.com
   appbindings.appcatalog.appscode.com
+  proxysqlversions.catalog.kubedb.com
 )
 apiServices=(v1alpha1.validators v1alpha1.mutators)
 
@@ -518,6 +520,11 @@ fi
 if [ "$KUBEDB_CATALOG" = "all" ] || [ "$KUBEDB_CATALOG" = "redis" ]; then
   echo "installing KubeDB Redis catalog"
   ${SCRIPT_LOCATION}deploy/kubedb-catalog/redis.yaml | $ONESSL envsubst | kubectl apply -f -
+fi
+
+if [ "$KUBEDB_CATALOG" = "all" ] || [ "$KUBEDB_CATALOG" = "proxysql" ]; then
+  echo "installing KubeDB ProxySQL catalog"
+  ${SCRIPT_LOCATION}deploy/kubedb-catalog/proxysql.yaml | $ONESSL envsubst | kubectl apply -f -
 fi
 
 if [ "$KUBEDB_ENABLE_VALIDATING_WEBHOOK" = true ]; then
