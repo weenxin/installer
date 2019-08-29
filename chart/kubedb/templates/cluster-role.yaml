@@ -126,6 +126,7 @@ rules:
   - mongodb-snapshot
   - mysql-snapshot
   - postgres-snapshot
+  - proxysql-db
   {{- range $x := .Values.additionalPodSecurityPolicies }}
   - {{ $x }}
   {{- end }}
