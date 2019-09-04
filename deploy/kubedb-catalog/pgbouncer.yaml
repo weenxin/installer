@@ -1,20 +1,72 @@
 apiVersion: catalog.kubedb.com/v1alpha1
 kind: PgBouncerVersion
 metadata:
-  name: "1.9.0-r"
+  name: "1.7"
   labels:
     app: kubedb
 spec:
   deprecated: false
-  version: "1.9.0"
+  version: "1.7"
   db:
-    image: "rezoan/pb:latest"
+    image: "${KUBEDB_DOCKER_REGISTRY}/pgbouncer:1.7"
   exporter:
-    image: "rezoan/pgbouncer_exporter:latest"
+    image: "${KUBEDB_DOCKER_REGISTRY}/pgbouncer_exporter:latest"
   podSecurityPolicies:
     databasePolicyName: pgbouncer
 
 ---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: PgBouncerVersion
+metadata:
+  name: "1.7.1"
+  labels:
+    app: kubedb
+spec:
+  deprecated: false
+  version: "1.7."
+  db:
+    image: "${KUBEDB_DOCKER_REGISTRY}/pgbouncer:1.7.1"
+  exporter:
+    image: "${KUBEDB_DOCKER_REGISTRY}/pgbouncer_exporter:latest"
+  podSecurityPolicies:
+    databasePolicyName: pgbouncer
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: PgBouncerVersion
+metadata:
+  name: "1.7.2"
+  labels:
+    app: kubedb
+spec:
+  deprecated: false
+  version: "1.7.2"
+  db:
+    image: "${KUBEDB_DOCKER_REGISTRY}/pgbouncer:1.7.2"
+  exporter:
+    image: "${KUBEDB_DOCKER_REGISTRY}/pgbouncer_exporter:latest"
+  podSecurityPolicies:
+    databasePolicyName: pgbouncer
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: PgBouncerVersion
+metadata:
+  name: "1.8.1"
+  labels:
+    app: kubedb
+spec:
+  deprecated: false
+  version: "1.8.1"
+  db:
+    image: "${KUBEDB_DOCKER_REGISTRY}/pgbouncer:1.8.1"
+  exporter:
+    image: "${KUBEDB_DOCKER_REGISTRY}/pgbouncer_exporter:latest"
+  podSecurityPolicies:
+    databasePolicyName: pgbouncer
+
+---
+
 apiVersion: catalog.kubedb.com/v1alpha1
 kind: PgBouncerVersion
 metadata:
@@ -25,8 +77,59 @@ spec:
   deprecated: false
   version: "1.9.0"
   db:
-    image: "${KUBEDB_DOCKER_REGISTRY}/pb:1.9.0"
+    image: "${KUBEDB_DOCKER_REGISTRY}/pgbouncer:1.9.0"
   exporter:
-    image: "${KUBEDB_DOCKER_REGISTRY}/pgbouncer_exporter:master"
+    image: "${KUBEDB_DOCKER_REGISTRY}/pgbouncer_exporter:latest"
+  podSecurityPolicies:
+    databasePolicyName: pgbouncer
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: PgBouncerVersion
+metadata:
+  name: "1.10.0"
+  labels:
+    app: kubedb
+spec:
+  deprecated: false
+  version: "1.10.0"
+  db:
+    image: "${KUBEDB_DOCKER_REGISTRY}/pgbouncer:1.10.0"
+  exporter:
+    image: "${KUBEDB_DOCKER_REGISTRY}/pgbouncer_exporter:latest"
+  podSecurityPolicies:
+    databasePolicyName: pgbouncer
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: PgBouncerVersion
+metadata:
+  name: "1.11.0"
+  labels:
+    app: kubedb
+spec:
+  deprecated: false
+  version: "1.11.0"
+  db:
+    image: "${KUBEDB_DOCKER_REGISTRY}/pgbouncer:1.11.0"
+  exporter:
+    image: "${KUBEDB_DOCKER_REGISTRY}/pgbouncer_exporter:latest"
+  podSecurityPolicies:
+    databasePolicyName: pgbouncer
+
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: PgBouncerVersion
+metadata:
+  name: "latest"
+  labels:
+    app: kubedb
+spec:
+  deprecated: false
+  version: "latest"
+  db:
+    image: "${KUBEDB_DOCKER_REGISTRY}/pgbouncer:latest"
+  exporter:
+    image: "${KUBEDB_DOCKER_REGISTRY}/pgbouncer_exporter:latest"
   podSecurityPolicies:
     databasePolicyName: pgbouncer
