@@ -7,3 +7,4 @@ catalog:
   mysql: true
   postgres: true
   redis: true
+  proxysql: true
