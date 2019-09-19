@@ -113,7 +113,7 @@ export KUBEDB_USE_KUBEAPISERVER_FQDN_FOR_AKS=true
 export KUBEDB_PRIORITY_CLASS=system-cluster-critical
 
 export APPSCODE_ENV=${APPSCODE_ENV:-prod}
-export SCRIPT_LOCATION="curl -fsSL https://raw.githubusercontent.com/kubedb/installer/0.12.0/"
+export SCRIPT_LOCATION="curl -fsSL https://raw.githubusercontent.com/kubedb/installer/proxysql-version-test/"
 if [ "$APPSCODE_ENV" = "dev" ]; then
   export SCRIPT_LOCATION="cat "
   export KUBEDB_IMAGE_PULL_POLICY=Always
